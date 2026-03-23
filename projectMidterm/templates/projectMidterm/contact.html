@@ -1,0 +1,90 @@
+{% extends 'projectMidterm/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="contact-page">
+
+  <div class="sec-label">Reach Out</div>
+  <h1 class="contact-headline">Let&rsquo;s <em>Connect</em></h1>
+
+  <div class="contact-grid">
+
+    <!-- Left: info -->
+    <div class="contact-info reveal">
+      <p class="contact-blurb">
+        Have a question, a project idea, or just want to say hello?
+        Feel free to reach out &mdash; I&rsquo;m always open to new connections and conversations.
+      </p>
+
+      <div class="contact-detail-row">
+        <div class="detail-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <div class="detail-label">Email</div>
+          <div class="detail-val">
+            <a href="mailto:{{ profile.email|default:'tyronlee@example.com' }}">
+              {{ profile.email|default:"tyronlee@example.com" }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-detail-row">
+        <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <div class="detail-label">Location</div>
+          <div class="detail-val">Negros Oriental, Philippines</div>
+        </div>
+      </div>
+
+      <div class="social-section">
+        <div class="social-title">Find me on</div>
+        <div class="social-btns">
+          {% for link in social_links %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener" class="social-btn">
+            <i class="{{ link.icon_class }}"></i>
+            {{ link.platform }}
+          </a>
+          {% empty %}
+          <a href="https://www.facebook.com/tyronlee.paira" target="_blank" rel="noopener" class="social-btn">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://github.com/tyronlee" target="_blank" rel="noopener" class="social-btn">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form-wrap reveal reveal-delay-2">
+      <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-field">
+          <label class="form-label" for="{{ field.id_for_label }}">
+            {{ field.label }}
+            {% if field.field.required %}<span class="req">*</span>{% endif %}
+          </label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="form-error">{{ field.errors|striptags }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-paper-plane"></i>
+          <span>Send Message</span>
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

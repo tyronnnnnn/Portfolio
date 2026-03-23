@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyron Lee Paira — Portfolio</title>
+  <meta name="description" content="Tyron Lee Paira — BSIT Student & Aspiring Developer at Negros Oriental State University.">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'projectMidterm/css/style.css' %}">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav" id="siteNav">
+    <a href="{% url 'home' %}" class="nav-logo">
+      Tyron Lee<span>.</span>
+    </a>
+
+    <button
+      class="nav-hamburger"
+      id="navHamburger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{% url 'home' %}"      class="{% if active_page == 'home'      %}active{% endif %}">Home</a></li>
+      <li><a href="{% url 'about' %}"     class="{% if active_page == 'about'     %}active{% endif %}">About</a></li>
+      <li><a href="{% url 'skills' %}"    class="{% if active_page == 'skills'    %}active{% endif %}">Skills</a></li>
+      <li><a href="{% url 'projects' %}"  class="{% if active_page == 'projects'  %}active{% endif %}">Projects</a></li>
+      <li><a href="{% url 'education' %}" class="{% if active_page == 'education' %}active{% endif %}">Education</a></li>
+      <li><a href="{% url 'contact' %}"   class="{% if active_page == 'contact'   %}active{% endif %}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Flash messages -->
+  {% if messages %}
+  <div class="flash-messages">
+    {% for message in messages %}
+    <div class="flash-item {{ message.tags }}">
+      <span>{{ message }}</span>
+      <button class="flash-close" aria-label="Dismiss">&times;</button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Main content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-logo">Tyron Lee<span>.</span></div>
+    <div class="footer-text">
+      &copy; {% now "Y" %} &nbsp;&mdash;&nbsp;
+      BSIT &nbsp;&middot;&nbsp; Negros Oriental State University
+    </div>
+  </footer>
+
+  <script src="{% static 'projectMidterm/js/main.js' %}"></script>
+
+</body>
+</html>

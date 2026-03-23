@@ -1,0 +1,71 @@
+{% extends 'projectMidterm/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="skills-page">
+
+  <div class="skills-header">
+    <div class="sec-label">Expertise</div>
+    <h1 class="skills-headline">My <em>Skills</em></h1>
+  </div>
+
+  <div class="skills-cols">
+
+    {% if technical_skills %}
+    <div class="skills-col reveal">
+      <div class="skills-col-head">
+        <div class="col-icon"><i class="fas fa-code"></i></div>
+        <h2 class="col-title">Technical</h2>
+      </div>
+      {% for skill in technical_skills %}
+      <div class="skill-entry">
+        <div class="skill-row">
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-pct">{{ skill.proficiency }}%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="--w: {{ skill.proficiency }}%"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if professional_skills %}
+    <div class="skills-col reveal reveal-delay-2">
+      <div class="skills-col-head">
+        <div class="col-icon"><i class="fas fa-users"></i></div>
+        <h2 class="col-title">Professional</h2>
+      </div>
+      {% for skill in professional_skills %}
+      <div class="skill-entry">
+        <div class="skill-row">
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-pct">{{ skill.proficiency }}%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="--w: {{ skill.proficiency }}%"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+
+  <div class="tech-pills reveal">
+    <span class="tech-pill">Python</span>
+    <span class="tech-pill">Django</span>
+    <span class="tech-pill">JavaScript</span>
+    <span class="tech-pill">HTML</span>
+    <span class="tech-pill">CSS</span>
+    <span class="tech-pill">Bootstrap</span>
+    <span class="tech-pill">MySQL</span>
+    <span class="tech-pill">Git</span>
+    <span class="tech-pill">VS Code</span>
+  </div>
+
+</section>
+
+{% endblock %}

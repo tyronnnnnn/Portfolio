@@ -1,0 +1,94 @@
+{% extends 'projectMidterm/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+
+    <!-- Left: text -->
+    <div class="hero-text">
+      <div class="hero-eyebrow">Available for opportunities</div>
+      <h1 class="hero-name">
+        Tyron<br><em>Lee</em><br>Paira
+      </h1>
+      <p class="hero-role">
+        {{ profile.tagline|default:"BSINT Student · Aspiring Developer" }}
+      </p>
+      <p class="hero-bio">
+        {{ profile.short_intro|default:"A passionate Information Technology student at Negros Oriental State University, building thoughtful solutions through web development and software engineering." }}
+      </p>
+      <div class="hero-actions">
+        <a href="{% url 'projects' %}" class="btn btn-gold">
+          <span>View Projects</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="{% url 'contact' %}" class="btn btn-ghost">
+          <span>Get in Touch</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: photo + stats -->
+    <div class="hero-visual">
+      <div class="photo-frame">
+        {% if profile.profile_photo %}
+          <img src="{{ profile.profile_photo.url }}" alt="{{ profile.name }}">
+        {% else %}
+          <div class="photo-placeholder">T</div>
+        {% endif %}
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-val">3rd</div>
+          <div class="stat-lbl">Year</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">IT</div>
+          <div class="stat-lbl">Degree</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">PH</div>
+          <div class="stat-lbl">Based</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Featured Projects -->
+{% comment %} {% if featured_projects %}
+<section class="featured-section">
+  <div class="reveal">
+    <div class="sec-label">Selected Work</div>
+    <h2 class="sec-title">Featured <em>Projects</em></h2>
+  </div>
+
+  <div class="featured-grid stagger-children">
+    {% for project in featured_projects %}
+    <a href="{% url 'projects' %}" class="feat-card reveal">
+      <div class="feat-num">0{{ forloop.counter }}</div>
+      <div class="feat-arrow"><i class="fas fa-arrow-right"></i></div>
+      <h3 class="feat-title">{{ project.title }}</h3>
+      <p class="feat-desc">{{ project.description|truncatewords:20 }}</p>
+      <div class="feat-tags">
+        {% for tech in project.get_technologies_list %}
+          <span class="tag">{{ tech }}</span>
+        {% endfor %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="view-all-row reveal">
+    <a href="{% url 'projects' %}" class="link-arrow">
+      View all projects <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+{% endif %} {% endcomment %}
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'projectMidterm/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="edu-page">
+
+  <div class="sec-label">Background</div>
+  <h1 class="edu-headline">Education <em>&amp; History</em></h1>
+
+  <div class="timeline">
+
+    {% for edu in education_list %}
+    <div class="tl-entry reveal">
+      <div class="tl-marker"></div>
+      <div class="tl-period">
+        {{ edu.year_start }} &mdash; {% if edu.is_current %}Present{% else %}{{ edu.year_end }}{% endif %}
+      </div>
+      <h2 class="tl-degree">
+        {{ edu.degree }}
+        {% if edu.is_current %}
+          <span class="tl-badge">Current</span>
+        {% endif %}
+      </h2>
+      <p class="tl-school">{{ edu.school }}</p>
+      {% if edu.description %}
+        <p class="tl-desc">{{ edu.description }}</p>
+      {% endif %}
+    </div>
+
+    {% empty %}
+
+    <!-- Fallback entries if DB is empty -->
+    <div class="tl-entry reveal">
+      <div class="tl-marker"></div>
+      <div class="tl-period">2022 &mdash; Present</div>
+      <h2 class="tl-degree">
+        BS Information Technology
+        <span class="tl-badge">Current</span>
+      </h2>
+      <p class="tl-school">Negros Oriental State University</p>
+      <p class="tl-desc">
+        Pursuing a degree in Information Technology with a focus on software development,
+        web technologies, and systems analysis and design.
+      </p>
+    </div>
+
+    <div class="tl-entry reveal reveal-delay-1">
+      <div class="tl-marker"></div>
+      <div class="tl-period">2018 &mdash; 2022</div>
+      <h2 class="tl-degree">Senior High School</h2>
+      <p class="tl-school">Academic Track</p>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+  <div class="achievements-box reveal">
+    <div class="ach-head">Academic Achievements</div>
+    <ul class="ach-list">
+      <li>Dean&rsquo;s Lister, 2nd Year</li>
+      <li>Consistent honor student throughout high school</li>
+      <li>Active participant in IT-related seminars and workshops</li>
+    </ul>
+  </div>
+
+</section>
+
+{% endblock %}

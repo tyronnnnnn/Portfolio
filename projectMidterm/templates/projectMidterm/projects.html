@@ -1,0 +1,64 @@
+{% extends 'projectMidterm/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="projects-page">
+
+  <div class="projects-top">
+    <div>
+      <div class="sec-label">Portfolio</div>
+      <h1 class="projects-headline">All <em>Projects</em></h1>
+    </div>
+    {% if projects %}
+    <span class="proj-count">{{ projects|length }} project{{ projects|length|pluralize }}</span>
+    {% endif %}
+  </div>
+
+  {% comment %} {% if projects %}
+  <div class="proj-list stagger-children">
+    {% for project in projects %}
+    <div class="proj-row reveal">
+      <div class="proj-num">{{ forloop.counter|stringformat:"02d" }}</div>
+
+      <div class="proj-info">
+        <h2 class="proj-title">{{ project.title }}</h2>
+        <p class="proj-desc">{{ project.description }}</p>
+        <div class="proj-meta">
+          {% for tech in project.get_technologies_list %}
+            <span class="proj-tag">{{ tech }}</span>
+          {% endfor %}
+          <span class="proj-date">{{ project.completion_date|date:"M Y" }}</span>
+        </div>
+      </div>
+
+      <div class="proj-actions">
+        {% if project.image %}
+          <img src="{{ project.image.url }}" alt="{{ project.title }}" class="proj-thumb">
+        {% else %}
+          <div class="proj-thumb-placeholder"><i class="fas fa-code"></i></div>
+        {% endif %}
+        {% if project.github_link %}
+          <a href="{{ project.github_link }}" target="_blank" rel="noopener" class="proj-link-btn">
+            <i class="fab fa-github"></i> Code
+          </a>
+        {% endif %}
+        {% if project.live_demo_link %}
+          <a href="{{ project.live_demo_link }}" target="_blank" rel="noopener" class="proj-link-btn">
+            <i class="fas fa-external-link-alt"></i> Live
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div> {% endcomment %}
+
+  {% comment %} {% else %} {% endcomment %}
+  <div class="empty-projects reveal">
+    <p>No projects added yet — check back soon.</p>
+  </div>
+  {% comment %} {% endif %} {% endcomment %}
+
+</section>
+
+{% endblock %}

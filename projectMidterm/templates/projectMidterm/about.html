@@ -1,0 +1,53 @@
+{% extends 'projectMidterm/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="about-page">
+
+  <div class="about-header">
+    <div>
+      <div class="sec-label">About Me</div>
+      <h1 class="about-headline">
+        Who<br><em>I Am</em>
+      </h1>
+    </div>
+    <p class="about-intro">
+      {{ profile.about_text|default:"I am Tyron Lee T. Paira, a third-year Bachelor of Science in Information Technology student at Negros Oriental State University. I have a strong interest in technology and continuously strive to improve my knowledge and skills in programming and system development. My goal is to become a successful IT professional who contributes to innovative projects in the future." }}
+    </p>
+  </div>
+
+  <div class="reveal">
+    <p class="goals-label">Career Directions</p>
+    <div class="goals-grid stagger-children">
+
+      <div class="goal-cell reveal">
+        <div class="goal-icon-wrap"><i class="fas fa-code"></i></div>
+        <h3 class="goal-name">Full-Stack Development</h3>
+        <p class="goal-desc">Master modern web technologies and frameworks to build complete, scalable applications from front to back.</p>
+      </div>
+
+      <div class="goal-cell reveal">
+        <div class="goal-icon-wrap"><i class="fas fa-lightbulb"></i></div>
+        <h3 class="goal-name">Innovation & Impact</h3>
+        <p class="goal-desc">Create technology solutions that solve real problems and positively impact communities in the Philippines and beyond.</p>
+      </div>
+
+      <div class="goal-cell reveal">
+        <div class="goal-icon-wrap"><i class="fas fa-chart-line"></i></div>
+        <h3 class="goal-name">Continuous Learning</h3>
+        <p class="goal-desc">Stay ahead of emerging technologies and industry trends through self-directed study and hands-on projects.</p>
+      </div>
+
+      <div class="goal-cell reveal">
+        <div class="goal-icon-wrap"><i class="fas fa-users"></i></div>
+        <h3 class="goal-name">Team Collaboration</h3>
+        <p class="goal-desc">Work within driven teams to architect and ship meaningful software with purpose and precision.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}

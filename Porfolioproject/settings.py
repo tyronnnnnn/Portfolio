@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-)_x@b1!@t+f+7^ao&$wysahvqo2-olv*$2sc3qqb@p$#ft__9u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8987-124-217-4-110.ngrok-free.app', 'localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://8987-124-217-4-110.ngrok-free.app']
+ALLOWED_HOSTS = ['tyronleepaira.pythonanywhere.com', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://tyronleepaira.pythonanywhere.com']
 
 
 
@@ -119,7 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'projectMidterm', 'static')]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
